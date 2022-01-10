@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class ATMRunnableTester {
 
@@ -34,6 +35,28 @@ public class ATMRunnableTester {
                 + "\nYou have: " + 1330 + " available in your account";
 
         assertEquals(actualvalue, expectedvalue);
+    }
+
+    @Test
+    public void TestOutputCalculatorWrong() throws Throwable{
+        ATMRunnable instanceOfRun = new ATMRunnable();
+
+        Output outputInstance = new Output();
+        outputInstance.setTodispense(34);
+        outputInstance.setBaseamount(1330);
+        outputInstance.setChecker(true);
+
+        String actualvalue = instanceOfRun.outputCalculator(outputInstance);
+        String expectedvalue = "You will recieve \n"
+                + 1 + " 50 euro notes \n"
+                + 0 + " 20 euro notes \n"
+                + 0 + " 10 euro notes \n"
+                + 0 + " 5 euro notes \n"
+                + "\n" +  "Total: "
+                + 34
+                + "\nYou have: " + 1330 + " available in your account";
+
+        assertNotEquals(actualvalue, expectedvalue);
     }
 
     @Test
